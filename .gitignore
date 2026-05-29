@@ -1,4 +1,4 @@
 node_modules/
-plan.json
+/plan.json
 *.tmp
 .DS_Store
