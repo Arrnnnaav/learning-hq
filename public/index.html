@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Learning HQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Search overlay -->
+  <div id="search-overlay" class="hidden" role="dialog" aria-modal="true" aria-label="Search links">
+    <div id="search-box">
+      <input id="search-input" type="text" placeholder="Search links... (Esc to close)">
+      <div id="search-results"></div>
+      <div id="search-empty" class="hidden">
+        <p>No results. <button id="search-add-btn">Add this URL →</button></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overview overlay -->
+  <div id="overview-overlay" class="hidden" role="dialog" aria-modal="true" aria-labelledby="overview-name">
+    <div id="overview-box">
+      <button id="overview-close" title="Close (Esc)" aria-label="Close overview">✕</button>
+      <h3 id="overview-name"></h3>
+      <p id="overview-summary"></p>
+      <div id="overview-goal" class="overview-line hidden"></div>
+      <div id="overview-milestone" class="overview-line hidden"></div>
+      <div id="overview-concepts-wrap" class="hidden">
+        <div class="overview-sub">Key concepts</div>
+        <div id="overview-concepts"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top bar -->
+  <header id="topbar">
+    <div id="logo"><span class="logo-star">✦</span> AI LEARNING HQ</div>
+    <button id="search-trigger" title="Search (Ctrl+K)" aria-label="Search links">🔍 Search</button>
+    <div id="add-link-bar">
+      <input id="add-url-input" type="text" placeholder="Paste URL to add to learning plan...">
+      <button id="add-url-btn">ADD</button>
+    </div>
+  </header>
+
+  <!-- Layout: sidebar + main -->
+  <div id="layout">
+
+    <!-- Phase sidebar -->
+    <section id="kanban">
+      <div id="kanban-label">Learning Path</div>
+      <div id="kanban-scroll">
+        <!-- Phase cards injected by app.js -->
+      </div>
+    </section>
+
+    <!-- Main content area -->
+    <main id="main">
+      <div id="phase-detail">
+        <div id="phase-header">
+          <h2 id="phase-title"></h2>
+          <button id="overview-btn" class="hidden" title="Phase overview">ⓘ Overview</button>
+        </div>
+        <div id="read-next-banner" class="hidden">
+          <div class="banner-label">⚡ Read Next</div>
+          <div id="read-next-title"></div>
+          <div id="read-next-meta"></div>
+          <div id="read-next-actions">
+            <button id="read-next-open">Open →</button>
+            <button id="read-next-done">✓ Done</button>
+          </div>
+        </div>
+        <div id="link-list">
+          <!-- Link cards injected by app.js -->
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <div id="loading" class="hidden">Loading...</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
