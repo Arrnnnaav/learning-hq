@@ -31,6 +31,21 @@ install the companion **Learning HQ plugin** in your own agent (Claude Code or C
 and run it from this directory. Generated docs appear behind a 📖 **Study** button on the
 relevant link. See the plugin repo for setup.
 
+## Optional AI without an agent
+
+Prefer not to use the plugin? You can run **Auto-sort** and **Re-enrich** directly in the
+app with your own OpenAI-compatible endpoint:
+
+1. `cp .env.example .env`
+2. Fill in `AI_BASE_URL`, `AI_API_KEY` (blank for Ollama), and `AI_MODEL`.
+   - Hosted: `https://api.openai.com/v1` + your key + e.g. `gpt-4o-mini`.
+   - Free/local: run [Ollama](https://ollama.com), then `http://localhost:11434/v1` + `llama3.1`.
+3. `npm start` (restart if it was running).
+
+When configured, an **✨ Auto-sort** button appears on the Inbox and a **↻** re-enrich
+button on each card. Study-doc generation needs live web search — use the plugin for that.
+Your key stays in `.env` (git-ignored) and is never sent to the browser.
+
 ## Plan format
 
 `plan.json` has two arrays:
