@@ -1,0 +1,906 @@
+{
+  "meta": {
+    "title": "AI/ML Engineer Learning Path",
+    "version": 1
+  },
+  "phases": [
+    {
+      "id": "inbox",
+      "name": "Inbox",
+      "summary": "Newly added links land here. Assign each a phase + priority.",
+      "goal": "",
+      "milestone": "",
+      "concepts": []
+    },
+    {
+      "id": "phase0",
+      "name": "Immediate Wins",
+      "summary": "Quick, high-ROI upgrades to your existing projects that need zero new prerequisites. The aim is to make DocCluster meaningfully stronger and refresh your resume fast — reasoning-based RAG, faster embeddings, and bigger local models you can run on modest hardware.",
+      "goal": "Upgrade existing projects. Zero new prereqs. Fast ROI on resume.",
+      "milestone": "DocCluster v2: reasoning-based RAG + faster embeddings + bigger local model. Update resume.",
+      "concepts": [
+        "Reasoning-based / tree-index RAG (PageIndex)",
+        "Knowledge-graph + dual-level retrieval (LightRAG)",
+        "Fast multi-format embeddings (EmbedAnything)",
+        "Large local LLM inference on small GPUs (airllm)",
+        "Sparse attention for long context (MSA)",
+        "Frontier-lab portfolio & referral strategy"
+      ]
+    },
+    {
+      "id": "phase1",
+      "name": "Plug Critical Interview Gaps",
+      "summary": "A 6.37 CGPA means interviewers probe hard, so these are non-negotiable before applying. You close the two biggest gaps: system design (nothing on the resume yet) and the math behind the attention variants you'll meet in papers.",
+      "goal": "CGPA 6.37 means interviewers probe hard. These are non-negotiable before any job applications.",
+      "milestone": "Can answer system design questions. Understand math behind attention variants.",
+      "concepts": [
+        "System design fundamentals (caching, load balancing, consistent hashing, microservices)",
+        "Attention math, softmax, positional encoding (Jurafsky SLP3)",
+        "AutoML pipelines for tabular/text/image (AutoGluon)"
+      ]
+    },
+    {
+      "id": "phase2",
+      "name": "Agent Foundations",
+      "summary": "Your biggest resume gap, closed: go from zero to understanding and building AI agents. You'll learn the agent-vs-workflow distinction, the core control loops, multi-agent patterns, and the production engineering (tools, context, evaluation) that separates a demo from a system.",
+      "goal": "Fill biggest resume gap. Go from zero to building agents.",
+      "milestone": "Understand agent architectures. Can describe in interview. Have run agent code.",
+      "concepts": [
+        "Agent vs workflow distinction",
+        "Reflection / reflect-act loop",
+        "Multi-agent conversation (AutoGen)",
+        "Orchestrator-workers & isolated sub-agents",
+        "The augmented LLM + 5 workflow patterns",
+        "Tool / Agent-Computer Interface (ACI) design",
+        "Context engineering (compaction, memory, JIT retrieval)"
+      ]
+    },
+    {
+      "id": "phase3",
+      "name": "Research Papers",
+      "summary": "Amazon ML School showed you can read papers — this phase turns that into a high-signal skill for research and ML roles. You read four-plus papers on attention internals and efficiency, then study agent-harness engineering, and apply at least one technique (TurboQuant) to DocCluster.",
+      "goal": "Amazon ML School shows he can read papers. High-signal for research/ML roles.",
+      "milestone": "4 papers read. Can discuss each technically. TurboQuant applied to DocCluster.",
+      "concepts": [
+        "Cross-head attention communication (IHA)",
+        "KV-cache & vector compression (TurboQuant / PolarQuant)",
+        "Agentic harness auto-optimization (Meta-Harness)",
+        "Self-improving agents (Darwin Gödel Machine)",
+        "Long-running agent harness design (generator/evaluator, handoff artifacts)"
+      ]
+    },
+    {
+      "id": "phase4",
+      "name": "Build Agent Project",
+      "summary": "Convert everything you've learned into one strong, deployed agent project — worth more than ten tutorials. You'll use spec-driven development and multi-agent orchestration patterns, and set up real evaluation for the agent.",
+      "goal": "Convert learning into resume bullet. 1 strong agent project beats 10 tutorials.",
+      "milestone": "Deployed agent project on GitHub with README. New resume bullet.",
+      "concepts": [
+        "Evolutionary agent design (AlphaEvolve)",
+        "Claude Code skills for solo builders (gstack)",
+        "Multi-agent orchestration (ruflo)",
+        "Spec-driven development (spec-kit)",
+        "Agent evaluation pipelines (LLM-as-judge, DeepEval, CI/CD)"
+      ]
+    },
+    {
+      "id": "phase5",
+      "name": "Trading AI Domain",
+      "summary": "An optional, high-paying niche where your ML background transfers directly. You study multi-agent trading architectures and the new financial foundation models, optionally building a small trading agent.",
+      "goal": "High-paying niche. His ML background transfers directly.",
+      "milestone": "Understand trading agent architecture. Optional: small trading agent project.",
+      "concepts": [
+        "Multi-agent signal generation (TradingAgents)",
+        "Signal publish/copy platform architecture (AI-Trader)",
+        "Vector quantization for financial embeddings",
+        "Financial-markets foundation models (Kronos)",
+        "Time-series forecasting models (Chronos, TimesFM)"
+      ]
+    },
+    {
+      "id": "phase_multimodal",
+      "name": "Multimodal LLMs",
+      "summary": "Understand vision-language models end to end — from ViT patch embeddings to instruction-tuned VLMs — bridging your CNN background with modern multimodal AI. Culminates in a Multimodal DocCluster project.",
+      "goal": "Understand vision-language models end-to-end. From ViT patch embeddings to instruction-tuned VLMs. Bridge CNN background with modern multimodal AI.",
+      "milestone": "Can explain ViT/CLIP/BLIP-2/LLaVA architectures in technical interviews. Built Multimodal DocCluster project.",
+      "concepts": [
+        "Vision Transformer (ViT) patch embeddings",
+        "Contrastive learning (SimCLR, CLIP)",
+        "Self-supervised vision (DINO, DINOv2, MAE)",
+        "Vision-language bridging (Flamingo, BLIP-2 Q-Former)",
+        "Instruction-tuned VLMs (InstructBLIP, LLaVA)",
+        "Object detection transformers (DETR, Deformable DETR)"
+      ]
+    },
+    {
+      "id": "phase6",
+      "name": "Frontier Models and Architecture",
+      "summary": "Ongoing reference reading to stay current on models and architectures while you build. Dip in as needed rather than studying linearly.",
+      "goal": "Reference reading while building. Stay current on models and architectures.",
+      "milestone": "",
+      "concepts": [
+        "Real-time interaction models",
+        "Sub-quadratic / long-context architectures (SubQ)",
+        "Long-form audio generation (VibeVoice)",
+        "Real-time detection transformers (RF-DETR)",
+        "Time-series & image-text foundation models (TimesFM, TIPS)",
+        "Hierarchical vision transformers (Swin), video & occupancy (VideoMAE)"
+      ]
+    },
+    {
+      "id": "phase7",
+      "name": "Claude Code Architecture (Optional)",
+      "summary": "Agent-harness internals — only worth your time if you branch into developer tooling. Reverse-engineered architectures and reimplementations of coding-agent harnesses.",
+      "goal": "Agent harness internals — only if branching into developer tooling.",
+      "milestone": "",
+      "concepts": [
+        "Coding-agent harness internals (claude-code-from-source)",
+        "Python→Rust harness reimplementation (Claw-Code)",
+        "Multi-agent / swarm coding harnesses (jcode)",
+        "Runtime guardrails: classifier-gated auto mode",
+        "Always-on cloud agent environments (Manus)"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "id": "L1",
+      "url": "https://thinkingmachines.ai/blog/interaction-models/",
+      "title": "Interaction Models",
+      "description": "Real-time audio/video/text AI with time-aligned micro-turns for continuous human-AI interaction",
+      "category": "blog",
+      "phase": "phase6",
+      "priority": "Soon",
+      "done": false,
+      "order": 0
+    },
+    {
+      "id": "L3",
+      "url": "https://github.com/github/spec-kit",
+      "title": "spec-kit (GitHub)",
+      "description": "Spec-Driven Development toolkit — specs → implementations via CLI + AI agents",
+      "category": "github",
+      "phase": "phase4",
+      "priority": "Soon",
+      "done": false,
+      "order": 3
+    },
+    {
+      "id": "L4",
+      "url": "https://github.com/HKUDS/AI-Trader",
+      "title": "AI-Trader (HKUDS)",
+      "description": "Multi-agent trading platform — AI agents publish signals, copy top performers across stocks/crypto/forex",
+      "category": "github",
+      "phase": "phase5",
+      "priority": "Soon",
+      "done": false,
+      "order": 1
+    },
+    {
+      "id": "L5",
+      "url": "https://github.com/tinyhumansai/openhuman",
+      "title": "openhuman",
+      "description": "Open-source personal AI assistant, 118+ integrations, local memory, desktop UI",
+      "category": "github",
+      "phase": "phase7",
+      "priority": "Soon",
+      "done": false,
+      "order": 0
+    },
+    {
+      "id": "L6",
+      "url": "https://subq.ai/",
+      "title": "SubQ",
+      "description": "Sub-quadratic LLM for 12M-token reasoning — sparse attention, fraction of typical compute",
+      "category": "tool",
+      "phase": "phase6",
+      "priority": "Soon",
+      "done": false,
+      "order": 1
+    },
+    {
+      "id": "L7",
+      "url": "https://microsoft.github.io/VibeVoice/",
+      "title": "VibeVoice (Microsoft)",
+      "description": "Long-form multi-speaker conversational audio generation up to 90 minutes",
+      "category": "tool",
+      "phase": "phase6",
+      "priority": "Soon",
+      "done": false,
+      "order": 2
+    },
+    {
+      "id": "L8",
+      "url": "https://github.com/VectifyAI/PageIndex",
+      "title": "PageIndex",
+      "description": "Reasoning-based RAG with hierarchical tree indexes — no vector DB. Direct upgrade to DocCluster.",
+      "category": "github",
+      "phase": "phase0",
+      "priority": "Soon",
+      "done": false,
+      "order": 0
+    },
+    {
+      "id": "L10",
+      "url": "https://arxiv.org/abs/2602.21371",
+      "title": "Interleaved Head Attention (IHA)",
+      "description": "Cross-head communication in MHA via learned linear combos. +5.8% GSM8K. Authors: Duvvuri et al.",
+      "category": "paper",
+      "phase": "phase3",
+      "priority": "Soon",
+      "done": false,
+      "order": 0
+    },
+    {
+      "id": "L11",
+      "url": "https://github.com/anil-matcha/open-generative-ai",
+      "title": "open-generative-ai",
+      "description": "Collection of open-source generative AI tools by Anil Matcha",
+      "category": "github",
+      "phase": "phase7",
+      "priority": "Soon",
+      "done": false,
+      "order": 1
+    },
+    {
+      "id": "L12",
+      "url": "https://github.com/StarlightSearch/EmbedAnything",
+      "title": "EmbedAnything",
+      "description": "Fast embedding pipeline for files, URLs, images. Replaces sentence-transformers in DocCluster.",
+      "category": "github",
+      "phase": "phase0",
+      "priority": "Soon",
+      "done": false,
+      "order": 1
+    },
+    {
+      "id": "L13",
+      "url": "https://github.com/1jehuang/jcode",
+      "title": "jcode",
+      "description": "Rust coding agent harness — multi-agent, semantic memory, browser automation, swarm coordination",
+      "category": "github",
+      "phase": "phase7",
+      "priority": "Soon",
+      "done": false,
+      "order": 2
+    },
+    {
+      "id": "L14",
+      "url": "https://manus.im/blog/manus-cloud-computer",
+      "title": "Manus Cloud Computer",
+      "description": "Always-on cloud VM for running bots/scripts/databases 24/7, no server setup",
+      "category": "blog",
+      "phase": "phase7",
+      "priority": "Soon",
+      "done": false,
+      "order": 3
+    },
+    {
+      "id": "L15",
+      "url": "https://github.com/ruvnet/ruflo",
+      "title": "ruflo",
+      "description": "Multi-agent Claude Code orchestration — 100+ specialized agents across machines, swarm intelligence",
+      "category": "github",
+      "phase": "phase4",
+      "priority": "Soon",
+      "done": false,
+      "order": 2
+    },
+    {
+      "id": "L16",
+      "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+      "title": "AlphaEvolve (DeepMind)",
+      "description": "Gemini-powered coding agent discovers novel algorithms via evolutionary search",
+      "category": "blog",
+      "phase": "phase4",
+      "priority": "Soon",
+      "done": false,
+      "order": 0
+    },
+    {
+      "id": "L17",
+      "url": "https://github.com/tauricresearch/tradingagents",
+      "title": "TradingAgents (Tauric Research)",
+      "description": "Multi-agent LLM framework for trading strategy development",
+      "category": "github",
+      "phase": "phase5",
+      "priority": "Soon",
+      "done": false,
+      "order": 0
+    },
+    {
+      "id": "L19",
+      "url": "https://github.com/roboflow/rf-detr",
+      "title": "RF-DETR (Roboflow)",
+      "description": "Real-time object detection transformer. Compare against YOLO/R-CNN he already knows.",
+      "category": "github",
+      "phase": "phase6",
+      "priority": "Soon",
+      "done": false,
+      "order": 3
+    },
+    {
+      "id": "L21",
+      "url": "https://github.com/jorgebmann/pyturboquant",
+      "title": "pyturboquant",
+      "description": "GPU-accelerated Python impl of Google TurboQuant — online vector quantization for RAG/ANN, no training needed",
+      "category": "github",
+      "phase": "phase3",
+      "priority": "Soon",
+      "done": false,
+      "order": 2
+    },
+    {
+      "id": "L22",
+      "url": "https://huggingface.co/spaces/smolagents/ml-intern",
+      "title": "ml-intern (smolagents)",
+      "description": "smolagents-powered ML intern demo. Run it, read source code.",
+      "category": "huggingface",
+      "phase": "phase2",
+      "priority": "Soon",
+      "done": false,
+      "order": 3
+    },
+    {
+      "id": "L23",
+      "url": "https://github.com/karpathy/autoresearch",
+      "title": "autoresearch (Karpathy)",
+      "description": "AI agents autonomously run ML experiments overnight — modifies GPT training code, self-iterates",
+      "category": "github",
+      "phase": "phase2",
+      "priority": "Soon",
+      "done": false,
+      "order": 4
+    },
+    {
+      "id": "L24",
+      "url": "https://github.com/google-research/timesfm",
+      "title": "TimesFM (Google)",
+      "description": "Google time series foundation model",
+      "category": "github",
+      "phase": "phase6",
+      "priority": "Soon",
+      "done": false,
+      "order": 4
+    },
+    {
+      "id": "L25",
+      "url": "https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/",
+      "title": "TurboQuant (Google Blog)",
+      "description": "3-bit KV-cache + vector compression via PolarQuant + Quantized JL. No accuracy loss.",
+      "category": "blog",
+      "phase": "phase3",
+      "priority": "Soon",
+      "done": false,
+      "order": 1
+    },
+    {
+      "id": "L26",
+      "url": "https://arxiv.org/abs/2603.28052",
+      "title": "Meta-Harness",
+      "description": "Auto-optimizes LLM code harnesses. +7.7pt text classification, -75% tokens, +4.7pt math. Authors: Lee et al.",
+      "category": "paper",
+      "phase": "phase3",
+      "priority": "Soon",
+      "done": false,
+      "order": 3
+    },
+    {
+      "id": "L27",
+      "url": "https://arxiv.org/abs/2505.22954",
+      "title": "Darwin Gödel Machine",
+      "description": "Self-improving agents via evolutionary code modification. SWE-bench 20%→50%, Polyglot 14%→30%. Authors: Zhang et al.",
+      "category": "paper",
+      "phase": "phase3",
+      "priority": "Soon",
+      "done": false,
+      "order": 4
+    },
+    {
+      "id": "L28",
+      "url": "https://www.lennysnewsletter.com/p/not-all-ai-agents-are-created-equal",
+      "title": "Not All AI Agents Are Equal (Lenny's)",
+      "description": "3 architecturally distinct agent types. Read first before any agent code.",
+      "category": "blog",
+      "phase": "phase2",
+      "priority": "Soon",
+      "done": false,
+      "order": 0
+    },
+    {
+      "id": "L29",
+      "url": "https://auto.gluon.ai/stable/index.html",
+      "title": "AutoGluon (AWS)",
+      "description": "AutoML for tabular, text, image. Easy resume add — complements existing sklearn/PyTorch.",
+      "category": "docs",
+      "phase": "phase1",
+      "priority": "Soon",
+      "done": false,
+      "order": 2
+    },
+    {
+      "id": "L30",
+      "url": "https://web.stanford.edu/~jurafsky/slp3/A.pdf",
+      "title": "Jurafsky SLP3 Appendix A",
+      "description": "Stanford NLP textbook math foundations — attention math, softmax, positional encoding. Prereq for IHA/MSA papers.",
+      "category": "pdf",
+      "phase": "phase1",
+      "priority": "Soon",
+      "done": false,
+      "order": 1
+    },
+    {
+      "id": "L31",
+      "url": "https://www.minimax.io/models/text/m27",
+      "title": "MiniMax M2.7",
+      "description": "Strong coding LLM — software engineering, log analysis, security, ML tasks",
+      "category": "model",
+      "phase": "phase6",
+      "priority": "Soon",
+      "done": false,
+      "order": 5
+    },
+    {
+      "id": "L32",
+      "url": "https://github.com/lyogavin/airllm",
+      "title": "airllm",
+      "description": "Run 70B LLMs on 4GB GPU — no quantization, distillation, or pruning needed. 405B on 8GB VRAM.",
+      "category": "github",
+      "phase": "phase0",
+      "priority": "Soon",
+      "done": false,
+      "order": 2
+    },
+    {
+      "id": "L33",
+      "url": "https://github.com/google-deepmind/tips",
+      "title": "TIPS / TIPSv2 (DeepMind)",
+      "description": "Foundational image-text encoder for CV and multimodal — segmentation, depth, retrieval",
+      "category": "github",
+      "phase": "phase6",
+      "priority": "Soon",
+      "done": false,
+      "order": 6
+    },
+    {
+      "id": "L34",
+      "url": "https://www.youtube.com/watch?v=10XNXASCgNs",
+      "title": "YouTube video (unknown)",
+      "description": "Specific video — watch once and assess relevance",
+      "category": "youtube_video",
+      "phase": "phase6",
+      "priority": "Soon",
+      "done": false,
+      "order": 7
+    },
+    {
+      "id": "L37",
+      "url": "https://github.com/donnemartin/system-design-primer",
+      "title": "System Design Primer",
+      "description": "280k★ comprehensive system design interview prep. HIGHEST PRIORITY — zero system design on resume.",
+      "category": "github",
+      "phase": "phase1",
+      "priority": "Soon",
+      "done": false,
+      "order": 0
+    },
+    {
+      "id": "L39",
+      "url": "https://github.com/garrytan/gstack",
+      "title": "gstack",
+      "description": "23 Claude Code skills — turns Claude into virtual engineering team (CEO, designer, QA, etc.) for solo builders",
+      "category": "github",
+      "phase": "phase4",
+      "priority": "Soon",
+      "done": false,
+      "order": 1
+    },
+    {
+      "id": "L40",
+      "url": "https://github.com/alejandrobalderas/claude-code-from-source",
+      "title": "claude-code-from-source",
+      "description": "Claude Code architecture reverse-engineered from source maps. No proprietary code.",
+      "category": "github",
+      "phase": "phase7",
+      "priority": "Soon",
+      "done": false,
+      "order": 4
+    },
+    {
+      "id": "L41",
+      "url": "https://github.com/AI-App/InstructKr.Claw-Code",
+      "title": "InstructKr.Claw-Code",
+      "description": "Python→Rust reimpl of Claude Code agent harness architecture",
+      "category": "github",
+      "phase": "phase7",
+      "priority": "Soon",
+      "done": false,
+      "order": 5
+    },
+    {
+      "id": "L44",
+      "url": "https://arxiv.org/abs/2603.23516",
+      "title": "MSA: Memory Sparse Attention",
+      "description": "Scales LLM context to 100M tokens via sparse attention + doc-wise RoPE. <9% perf loss. Authors: Chen et al.",
+      "category": "paper",
+      "phase": "phase0",
+      "priority": "Soon",
+      "done": false,
+      "order": 3
+    },
+    {
+      "id": "L45",
+      "url": "https://github.com/openai/CLIP",
+      "title": "CLIP (OpenAI)",
+      "description": "Contrastive Language-Image Pretraining — foundational vision-language model, zero-shot image classification via text prompts. Natural fit with his CNN/OpenCV background.",
+      "category": "github",
+      "phase": "phase_multimodal",
+      "priority": "Soon",
+      "done": false,
+      "order": 2
+    },
+    {
+      "id": "L46",
+      "url": "https://github.com/facebookresearch/dinov2",
+      "title": "DINOv2 (Meta)",
+      "description": "Self-supervised vision transformer — learns powerful visual features without labels. State-of-the-art on depth estimation, segmentation, classification. Pairs well with CLIP for multimodal projects.",
+      "category": "github",
+      "phase": "phase_multimodal",
+      "priority": "Soon",
+      "done": false,
+      "order": 5
+    },
+    {
+      "id": "L47",
+      "url": "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents",
+      "title": "Effective harnesses for long-running agents (Anthropic)",
+      "description": "Anthropic's engineering blog on designing harnesses for long-running agents — two-agent and three-agent architectures, progress logs, incremental session-based execution.",
+      "category": "blog",
+      "phase": "phase3",
+      "priority": "Soon",
+      "done": false,
+      "order": 5
+    },
+    {
+      "id": "L48",
+      "url": "https://github.com/shiyu-coder/Kronos",
+      "title": "Kronos: A Foundation Model for the Language of Financial Markets",
+      "description": "Decoder-only foundation model pre-trained on 12B K-line records from 45 global exchanges. Tokenizes OHLCV candlestick data into discrete tokens. +93% RankIC over leading TSFM. AAAI 2026.",
+      "category": "github",
+      "phase": "phase5",
+      "priority": "Soon",
+      "done": false,
+      "order": 3
+    },
+    {
+      "id": "L49",
+      "url": "https://vladfeinberg.com/2026/05/10/how-to-land-a-job-at-a-frontier-lab.html",
+      "title": "How to Land a Frontier Lab Job",
+      "description": "Practical guide on landing a job at frontier AI labs (OpenAI, Anthropic, DeepMind) — portfolio strategy, referral networks, interview prep, mission-fit rounds",
+      "category": "blog",
+      "phase": "phase0",
+      "priority": "Soon",
+      "done": false,
+      "order": 5
+    },
+    {
+      "id": "L50",
+      "url": "https://maven.com/p/d1cf5d/intro-to-agentic-ai-build-your-first-ai-agent",
+      "title": "Intro to Agentic AI – Build Your First AI Agent",
+      "description": "Hands-on intro to agentic AI: what agents are, how they reason, how to build your first agent using popular frameworks",
+      "category": "blog",
+      "phase": "phase2",
+      "priority": "Soon",
+      "done": false,
+      "order": 5
+    },
+    {
+      "id": "L51",
+      "url": "https://maven.com/p/466e22/1-designing-agentic-ai-systems-for-enterprise-use-cases",
+      "title": "Designing Agentic AI Systems for Enterprise Use-Cases",
+      "description": "Production patterns for enterprise agentic AI: reflection, tool-use, multi-agent coordination, real-world projects (pricing agents, incident triage, recruitment systems)",
+      "category": "blog",
+      "phase": "phase2",
+      "priority": "Soon",
+      "done": false,
+      "order": 6
+    },
+    {
+      "id": "L52",
+      "url": "https://maven.com/p/a58f3f/how-to-setup-evals-for-agents",
+      "title": "How to Setup Evals For Agents",
+      "description": "Practical guide to setting up evaluation pipelines for AI agents: automated evals, LLM-as-a-judge, DeepEval framework, CI/CD integration",
+      "category": "blog",
+      "phase": "phase4",
+      "priority": "Soon",
+      "done": false,
+      "order": 4
+    },
+    {
+      "id": "L53",
+      "url": "https://github.com/amazon-science/chronos-forecasting",
+      "title": "Chronos (Amazon)",
+      "description": "Pretrained language model for time series forecasting — zero-shot, probabilistic, 300+ forecasts/sec. Chronos-2 supports univariate, multivariate, and covariate-informed tasks. Pairs with TimesFM and Kronos.",
+      "category": "github",
+      "phase": "phase5",
+      "priority": "Soon",
+      "done": false,
+      "order": 4
+    },
+    {
+      "id": "L54",
+      "url": "https://claude.ai/share/44c2379c-9dd2-4111-95b7-e4cf89900c30",
+      "title": "Vision AI Learning Roadmap 2026",
+      "description": "Complete 6-phase vision AI curriculum: CNN foundations → Vision Transformers → Detection & BEV → Self-supervised learning (DINO, MAE) → Video & world models → Multimodal AI (CLIP, SAM, LLaVA). Curated YouTube resources per topic.",
+      "category": "blog",
+      "phase": "phase6",
+      "priority": "Soon",
+      "done": false,
+      "order": 10
+    },
+    {
+      "id": "L55",
+      "url": "https://arxiv.org/abs/1612.03144",
+      "title": "Feature Pyramid Networks (FPN / BiFPN)",
+      "description": "Multi-scale feature extraction for object detection — bottom-up + top-down pathways. BiFPN adds bi-directional weighted fusion (EfficientDet). Required for DETR understanding.",
+      "category": "paper",
+      "phase": "phase_multimodal",
+      "priority": "Soon",
+      "done": false,
+      "order": 11
+    },
+    {
+      "id": "L56",
+      "url": "https://arxiv.org/abs/2103.14030",
+      "title": "Swin Transformer",
+      "description": "Hierarchical vision transformer with shifted windows — linear complexity, dense prediction backbone. SOTA on detection and segmentation. Yannic Kilcher video: https://www.youtube.com/watch?v=SndHALawoag",
+      "category": "paper",
+      "phase": "phase6",
+      "priority": "Soon",
+      "done": false,
+      "order": 11
+    },
+    {
+      "id": "L57",
+      "url": "https://arxiv.org/abs/2005.12872",
+      "title": "DETR — End-to-End Object Detection with Transformers",
+      "description": "First transformer-based object detector — no anchors, no NMS, Hungarian matching. Direct ancestor of RF-DETR. Yannic Kilcher video: https://www.youtube.com/watch?v=T35ba_VXkMY",
+      "category": "paper",
+      "phase": "phase_multimodal",
+      "priority": "Soon",
+      "done": false,
+      "order": 12
+    },
+    {
+      "id": "L58",
+      "url": "https://arxiv.org/abs/2010.04159",
+      "title": "Deformable DETR",
+      "description": "Fixes DETR's slow convergence via deformable attention — attends to sparse key points not full feature map. Bridge between DETR and RF-DETR. Aleksa Gordić video: https://www.youtube.com/watch?v=BNFNsLMlJqg",
+      "category": "paper",
+      "phase": "phase_multimodal",
+      "priority": "Soon",
+      "done": false,
+      "order": 13
+    },
+    {
+      "id": "L59",
+      "url": "https://arxiv.org/abs/2203.17270",
+      "title": "BEVFormer",
+      "description": "Bird's Eye View representation from multi-camera images via spatiotemporal transformers. Tesla FSD-style multi-camera fusion. +9 NDS over prior SOTA on nuScenes.",
+      "category": "paper",
+      "phase": "phase_multimodal",
+      "priority": "Soon",
+      "done": false,
+      "order": 14
+    },
+    {
+      "id": "L60",
+      "url": "https://www.youtube.com/watch?v=Lk_IXWyeDys",
+      "title": "Occupancy Networks (Tesla AI Day 2021)",
+      "description": "3D voxel occupancy prediction from camera-only input — Tesla's approach to 4D scene understanding without LiDAR. Covers Occupancy Network architecture and BEV planning.",
+      "category": "youtube_video",
+      "phase": "phase6",
+      "priority": "Soon",
+      "done": false,
+      "order": 12
+    },
+    {
+      "id": "L61",
+      "url": "https://arxiv.org/abs/2104.14294",
+      "title": "DINO (original) — Self-Supervised Vision Transformers",
+      "description": "Original DINO self-distillation paper (v1) — student-teacher ViT without labels. Emergent segmentation. Direct precursor to DINOv2. Yannic Kilcher video: https://www.youtube.com/watch?v=h3ij3F3cPIk",
+      "category": "paper",
+      "phase": "phase_multimodal",
+      "priority": "Soon",
+      "done": false,
+      "order": 3
+    },
+    {
+      "id": "L62",
+      "url": "https://arxiv.org/abs/2111.06377",
+      "title": "MAE — Masked Autoencoders",
+      "description": "Mask 75% of image patches, reconstruct pixels — BERT for vision. Kaiming He et al. (Meta). Data-efficient SSL baseline before DINOv2. Yannic Kilcher video: https://www.youtube.com/watch?v=Dp6iICL2dVI",
+      "category": "paper",
+      "phase": "phase_multimodal",
+      "priority": "Soon",
+      "done": false,
+      "order": 4
+    },
+    {
+      "id": "L63",
+      "url": "https://arxiv.org/abs/2002.05709",
+      "title": "SimCLR — Contrastive Self-Supervised Learning",
+      "description": "Simple framework for contrastive learning — two augmented views of same image pulled together, different images pushed apart. Foundation for understanding CLIP contrastive training.",
+      "category": "paper",
+      "phase": "phase_multimodal",
+      "priority": "Soon",
+      "done": false,
+      "order": 1
+    },
+    {
+      "id": "L64",
+      "url": "https://arxiv.org/abs/2203.12602",
+      "title": "VideoMAE — Masked Autoencoders for Video",
+      "description": "Extends MAE to video with tube masking (90% masking ratio). Data-efficient video understanding — trains ViT on small datasets. Tesla temporal stack prerequisite.",
+      "category": "paper",
+      "phase": "phase6",
+      "priority": "Soon",
+      "done": false,
+      "order": 13
+    },
+    {
+      "id": "L65",
+      "url": "https://github.com/LMD0311/Awesome-World-Model",
+      "title": "World Models for Autonomous Driving",
+      "description": "Generative spatio-temporal neural systems that compress sensor observations into latent state and roll forward under actions — enabling vehicles to simulate futures. Curated paper list + GAIA-2 reference.",
+      "category": "github",
+      "phase": "phase_multimodal",
+      "priority": "Soon",
+      "done": false,
+      "order": 15
+    },
+    {
+      "id": "L66",
+      "url": "https://arxiv.org/abs/2304.02643",
+      "title": "SAM — Segment Anything Model (Meta)",
+      "description": "Universal image segmentation via point/box/text prompts — trained on 1B masks, 11M images. ViT backbone + lightweight mask decoder. SAM 2 extends to video.",
+      "category": "paper",
+      "phase": "phase_multimodal",
+      "priority": "Soon",
+      "done": false,
+      "order": 10
+    },
+    {
+      "id": "L67",
+      "url": "https://arxiv.org/abs/2304.08485",
+      "title": "LLaVA — Visual Instruction Tuning",
+      "description": "First visual instruction-tuned VLM — CLIP visual encoder + LLaMA LLM + projection layer. Two-stage training: align then fine-tune. Foundation of GPT-4V style models.",
+      "category": "paper",
+      "phase": "phase_multimodal",
+      "priority": "Soon",
+      "done": false,
+      "order": 9
+    },
+    {
+      "id": "L68",
+      "url": "https://github.com/hkuds/lightrag",
+      "title": "LightRAG: Simple and Fast Retrieval-Augmented Generation",
+      "description": "Open-source RAG system combining knowledge graphs with dual-level retrieval for improved query comprehensiveness, diversity, and empowerment. EMNLP 2025. 67.6% vs 32.4% for NaiveRAG on agriculture domain.",
+      "category": "github",
+      "phase": "phase0",
+      "priority": "Soon",
+      "done": false,
+      "order": 4
+    },
+    {
+      "id": "L69",
+      "url": "https://arxiv.org/abs/2010.11929",
+      "title": "ViT — An Image is Worth 16x16 Words",
+      "description": "Original Vision Transformer — splits image into 16x16 patches, treats as tokens, feeds into standard transformer. Foundation for DINO, DINOv2, MAE, Swin, SAM, LLaVA. Read before any ViT-based paper.",
+      "category": "paper",
+      "phase": "phase_multimodal",
+      "priority": "Soon",
+      "done": false,
+      "order": 0
+    },
+    {
+      "id": "L70",
+      "url": "https://arxiv.org/abs/2204.14198",
+      "title": "Flamingo — Visual Language Model for Few-Shot Learning",
+      "description": "Bridges frozen vision encoder + LLM via cross-attention layers — interleaved image/text input, few-shot multimodal tasks. Single model outperforms fine-tuned task-specific models. DeepMind, 2022.",
+      "category": "paper",
+      "phase": "phase_multimodal",
+      "priority": "Soon",
+      "done": false,
+      "order": 6
+    },
+    {
+      "id": "L71",
+      "url": "https://arxiv.org/abs/2301.12597",
+      "title": "BLIP-2 — Bootstrapping Language-Image Pre-training",
+      "description": "Lightweight Q-Former bridges frozen image encoder + frozen LLM. Outperforms Flamingo80B by 8.7% on zero-shot VQAv2 with 54x fewer trainable params. Salesforce, 2023.",
+      "category": "paper",
+      "phase": "phase_multimodal",
+      "priority": "Soon",
+      "done": false,
+      "order": 7
+    },
+    {
+      "id": "L72",
+      "url": "https://arxiv.org/abs/2305.06500",
+      "title": "InstructBLIP — Instruction Tuning for Vision-Language Models",
+      "description": "Instruction-aware Q-Former on BLIP-2 — trained on 26 datasets, SOTA zero-shot on 13 held-out benchmarks. Standard architecture for generalizable VLMs. Salesforce, 2023.",
+      "category": "paper",
+      "phase": "phase_multimodal",
+      "priority": "Soon",
+      "done": false,
+      "order": 8
+    },
+    {
+      "id": "L73",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "title": "Building Effective AI Agents (Anthropic)",
+      "description": "Anthropic's engineering guide on agent design — workflow vs. agent distinction, the augmented-LLM primitive, five workflow patterns (prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer), and autonomous agent loops with safeguards.",
+      "category": "blog",
+      "phase": "phase2",
+      "priority": "Soon",
+      "done": false,
+      "order": 7
+    },
+    {
+      "id": "L74",
+      "url": "https://www.anthropic.com/engineering/multi-agent-research-system",
+      "title": "How we built our multi-agent research system (Anthropic)",
+      "description": "Anthropic's production retrospective on Claude's Research feature — orchestrator (lead) agent spawning isolated parallel subagents, 90.2% gain over single-agent, prompt-engineering as primary lever, token-cost tradeoffs, and production hard parts (resumability, tracing, LLM-as-judge eval).",
+      "category": "blog",
+      "phase": "phase2",
+      "priority": "Soon",
+      "done": false,
+      "order": 8
+    },
+    {
+      "id": "L75",
+      "url": "https://www.anthropic.com/engineering/writing-tools-for-agents",
+      "title": "Writing effective tools for AI agents (Anthropic)",
+      "description": "Anthropic's guide to designing, writing, and evaluating tools for LLM agents — tool-as-prompt, fewer workflow-shaped tools over 1:1 API wraps, namespacing, high-signal returns, input tolerance, and an eval-driven loop where Claude improves its own tools.",
+      "category": "blog",
+      "phase": "phase2",
+      "priority": "Soon",
+      "done": false,
+      "order": 9
+    },
+    {
+      "id": "L76",
+      "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "title": "Effective context engineering for AI agents (Anthropic)",
+      "description": "Curating the optimal token set during inference — context rot, right-altitude system prompts, just-in-time retrieval vs pre-loading, and long-horizon techniques (compaction, structured note-taking, sub-agents).",
+      "category": "blog",
+      "phase": "phase2",
+      "priority": "Soon",
+      "done": false,
+      "order": 10
+    },
+    {
+      "id": "L77",
+      "url": "https://www.anthropic.com/engineering/harness-design-long-running-apps",
+      "title": "Harness design for long-running application development (Anthropic)",
+      "description": "Multi-agent GAN-inspired generator/evaluator harness for multi-hour autonomous frontend/full-stack coding — three-agent design, context resets + structured handoff artifacts, verified completion gates. Companion repo: anthropics/cwc-long-running-agents.",
+      "category": "blog",
+      "phase": "phase3",
+      "priority": "Soon",
+      "done": false,
+      "order": 6
+    },
+    {
+      "id": "L78",
+      "url": "https://www.anthropic.com/engineering/claude-code-auto-mode",
+      "title": "How we built Claude Code auto mode (Anthropic)",
+      "description": "Safer alternative to --dangerously-skip-permissions — a separate classifier model (Sonnet 4.6) reviews every action before execution, blocking unsafe ones while the agent recovers gracefully. Case study in runtime guardrail design for autonomous agents.",
+      "category": "blog",
+      "phase": "phase7",
+      "priority": "Soon",
+      "done": false,
+      "order": 6
+    }
+  ]
+}
