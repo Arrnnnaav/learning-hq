@@ -810,3 +810,18 @@ button:hover { opacity: 0.9; }
 .doc-content th, .doc-content td { border: 1px solid var(--border); padding: 7px 10px; text-align: left; font-size: 13.5px; }
 .doc-content ul, .doc-content ol { padding-left: 1.4em; margin: .6em 0; }
 .doc-content blockquote { border-left: 3px solid var(--accent2); padding-left: 14px; color: var(--text-muted); margin: 1em 0; }
+
+/* ── optional AI controls ── */
+.btn-ai {
+  background: linear-gradient(120deg, rgba(240,179,74,.18), rgba(111,160,255,.18));
+  color: var(--accent);
+  border: 1px solid rgba(240,179,74,.4);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-ai:hover { border-color: var(--accent); color: var(--text); opacity: 1; }
+.btn-ai:disabled { opacity: .5; cursor: default; }
+.btn-reenrich { padding: 6px 9px; }

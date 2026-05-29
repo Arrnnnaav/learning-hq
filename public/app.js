@@ -1,4 +1,4 @@
-const state = { phases: [], activePhaseId: null };
+const state = { phases: [], activePhaseId: null, aiEnabled: false };
 const $ = id => document.getElementById(id);
 function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
 let overviewLastFocus = null;
@@ -9,6 +9,8 @@ async function boot() {
   $('loading').classList.remove('hidden');
   try {
     await loadPlan();
+    try { state.aiEnabled = (await fetch('/api/ai/status').then(r => r.json())).enabled === true; }
+    catch { state.aiEnabled = false; }
     const current = state.phases.find(p => p.id !== 'inbox' && p.total > 0 && p.done < p.total)
       || state.phases.find(p => p.total > 0) || state.phases[0];
     if (current) selectPhase(current.id);
@@ -53,6 +55,19 @@ function wireEvents() {
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
+    $('ai-sort-btn').addEventListener('click', async () => {
+      const btn = $('ai-sort-btn');
+      btn.disabled = true;
+      try {
+        const res = await fetch('/api/ai/sort', { method: 'POST' });
+        const data = await res.json();
+        if (!res.ok) { alert(`Auto-sort failed: ${data.error || res.status}`); return; }
+        alert(`Sorted ${data.assignments.length} link(s)` + (data.skipped.length ? `, ${data.skipped.length} skipped` : ''));
+        await refresh();
+      } finally {
+        btn.disabled = false;
+      }
+    });
 }
 
 function catClass(c) {
@@ -95,6 +110,7 @@ function selectPhase(id) {
 
 function renderLinkList(phase) {
   const list = $('link-list'); list.innerHTML = '';
+  $('ai-sort-btn').classList.toggle('hidden', !(state.aiEnabled && phase.id === 'inbox' && phase.links.length > 0));
 
   const next = phase.id !== 'inbox' ? phase.links.find(l => !l.done) : null;
   const banner = $('read-next-banner');
@@ -129,6 +145,7 @@ function renderLinkList(phase) {
           <select class="lc-select sel-prio" aria-label="Priority">${prioOpts}</select>
         </div>
         <div class="link-btns">
+          ${state.aiEnabled ? '<button class="btn-ai btn-reenrich" title="Re-enrich with AI" aria-label="Re-enrich with AI">↻</button>' : ''}
           ${link.doc ? '<button class="btn-study" aria-label="Open study doc">📖 Study</button>' : ''}
           <button class="btn-open">Open →</button>
           <button class="btn-done${link.done ? ' done-btn' : ''}">${link.done ? '✓ Done' : 'Done'}</button>
@@ -138,6 +155,15 @@ function renderLinkList(phase) {
     card.querySelector('.btn-open').addEventListener('click', () => window.open(link.url, '_blank'));
     card.querySelector('.btn-done').addEventListener('click', () => patchLink(link.id, { done: !link.done }));
     card.querySelector('.btn-del').addEventListener('click', () => { if (confirm(`Delete "${link.title}"?`)) deleteLink(link.id); });
+    const reBtn = card.querySelector('.btn-reenrich');
+    if (reBtn) reBtn.addEventListener('click', async () => {
+      reBtn.disabled = true;
+      try {
+        const res = await fetch(`/api/ai/enrich/${link.id}`, { method: 'POST' });
+        if (!res.ok) { const d = await res.json().catch(() => ({})); alert(`Enrich failed: ${d.error || res.status}`); return; }
+        await refresh();
+      } finally { reBtn.disabled = false; }
+    });
     card.querySelector('.sel-phase').addEventListener('change', e => patchLink(link.id, { phase: e.target.value }));
     card.querySelector('.sel-prio').addEventListener('change', e => patchLink(link.id, { priority: e.target.value }));
     const studyBtn = card.querySelector('.btn-study');
