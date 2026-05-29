@@ -20,7 +20,7 @@ function loadEnv(envPath = '.env') {
 }
 
 function getConfig(env = process.env) {
-  return { baseUrl: env.AI_BASE_URL || '', apiKey: env.AI_API_KEY || '', model: env.AI_MODEL || '' };
+  return { baseUrl: (env.AI_BASE_URL || '').replace(/\/+$/, ''), apiKey: env.AI_API_KEY || '', model: env.AI_MODEL || '' };
 }
 
 function isEnabled(cfg = getConfig()) {

@@ -18,6 +18,11 @@ test('getConfig maps env', () => {
   );
 });
 
+test('getConfig strips trailing slash from baseUrl', () => {
+  assert.strictEqual(getConfig({ AI_BASE_URL: 'http://h/v1/' }).baseUrl, 'http://h/v1');
+  assert.strictEqual(getConfig({ AI_BASE_URL: 'http://h/v1' }).baseUrl, 'http://h/v1');
+});
+
 test('loadEnv parses file, ignores comments, does not override preset vars', () => {
   const p = path.join(__dirname, '_env_fixture');
   fs.writeFileSync(p, '# a comment\nAI_MODEL="abc"\nFOO=bar\n');
