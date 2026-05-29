@@ -2,6 +2,26 @@
 
 A local, no-key learning-path tracker. Organize courses, papers, repos, and videos into phases, track your progress, and see what to read next — all from a single, git-friendly `plan.json`. Runs entirely on your machine. No account, no API key, no cloud.
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+![No API key required](https://img.shields.io/badge/API%20key-not%20required-blue)
+
+## Features
+
+- 📚 Organize courses, papers, repos, and videos into **phases** with progress tracking
+- ⚡ **Read Next** suggestion per phase; priorities (Now / Soon / Someday)
+- 🗂️ **Inbox** for new links — assign phase + priority inline, mark done, delete
+- ℹ️ Per-phase **Overview** (summary, goal, milestone, key concepts)
+- 🔎 Fast search; one editable, git-friendly `plan.json`
+- 🌑 Distinctive dark "Observatory" theme, keyboard-accessible
+- 🤖 **Optional** AI (sort + enrich) via your own key or local Ollama — off by default
+- 🔒 Runs entirely locally. No account, no cloud, no API key needed.
+
+## Screenshot
+
+![Learning HQ screenshot](assets/screenshot.png)
+
+> _No screenshot yet? The app runs at http://localhost:3000 after `npm start` — see `assets/README.md`._
+
 ## Quick start
 
 ```bash
@@ -65,6 +85,14 @@ An always-present phase with `id: "inbox"` is where newly added links land. See 
 ```bash
 npm test
 ```
+
+## Companion plugin
+
+Want AI **sorting** and **study-doc generation** powered by your own agent (Claude Code or
+Codex)? Install the companion plugin — it runs in your agent (your subscription) and writes
+to the same `plan.json`:
+
+→ **[learning-hq-plugin](https://github.com/Arrnnnaav/learning-hq-plugin)**
 
 ## License
 
