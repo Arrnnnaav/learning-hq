@@ -1,0 +1,10 @@
+{
+  "meta": { "title": "Test Plan", "version": 1 },
+  "phases": [
+    { "id": "inbox", "name": "Inbox", "summary": "", "goal": "", "milestone": "", "concepts": [] },
+    { "id": "p1", "name": "Phase One", "summary": "sum", "goal": "g", "milestone": "m", "concepts": ["x"] }
+  ],
+  "links": [
+    { "id": "L1", "url": "https://example.com/a", "title": "A", "description": "", "category": "blog", "phase": "p1", "priority": "Now", "done": false, "order": 0 }
+  ]
+}
