@@ -80,6 +80,19 @@ app.get('/api/search', (req, res) => {
   ).slice(0, 20));
 });
 
+app.get('/api/doc/:id', (req, res) => {
+  const plan = readPlan(PLAN_FILE);
+  const link = plan.links.find(l => l.id === req.params.id);
+  if (!link || !link.doc) return res.status(404).json({ error: 'no doc' });
+  const base = path.resolve(path.dirname(PLAN_FILE));
+  const docPath = path.resolve(base, link.doc);
+  if (docPath !== base && !docPath.startsWith(base + path.sep)) {
+    return res.status(400).json({ error: 'bad path' });
+  }
+  if (!fs.existsSync(docPath)) return res.status(404).json({ error: 'no doc' });
+  res.json({ id: link.id, markdown: fs.readFileSync(docPath, 'utf8') });
+});
+
 if (require.main === module) {
   app.listen(PORT, () => console.log(`Learning HQ running at http://localhost:${PORT}`));
 }

@@ -59,3 +59,32 @@ test('DELETE removes a link', async () => {
 test('POST duplicate url is 409', async () => {
   assert.strictEqual((await api('POST', '/api/links', { url: 'https://example.com/a' })).status, 409);
 });
+
+test('GET /api/doc returns markdown when link has a doc + file exists', async () => {
+  const dir = path.join(__dirname, 'fixtures', 'study');
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, 'L1.md'), '# Hello\n\nbody');
+  const plan = JSON.parse(fs.readFileSync(TMP, 'utf8'));
+  plan.links.find(l => l.id === 'L1').doc = 'study/L1.md';
+  fs.writeFileSync(TMP, JSON.stringify(plan));
+  const r = await api('GET', '/api/doc/L1');
+  assert.strictEqual(r.status, 200);
+  const d = await r.json();
+  assert.match(d.markdown, /# Hello/);
+  fs.rmSync(dir, { recursive: true, force: true });
+});
+
+test('GET /api/doc 404 when link has no doc', async () => {
+  assert.strictEqual((await api('GET', '/api/doc/L1')).status, 404);
+});
+
+test('GET /api/doc 404 for unknown id', async () => {
+  assert.strictEqual((await api('GET', '/api/doc/L999')).status, 404);
+});
+
+test('GET /api/doc 400 on path traversal', async () => {
+  const plan = JSON.parse(fs.readFileSync(TMP, 'utf8'));
+  plan.links.find(l => l.id === 'L1').doc = '../../secret.md';
+  fs.writeFileSync(TMP, JSON.stringify(plan));
+  assert.strictEqual((await api('GET', '/api/doc/L1')).status, 400);
+});
