@@ -1,6 +1,8 @@
 # Learning HQ
 
-A local, no-key learning-path tracker. Organize courses, papers, repos, and videos into phases, track your progress, and see what to read next — all from a single, git-friendly `plan.json`. Runs entirely on your machine. No account, no API key, no cloud.
+**Turn a pile of bookmarks into a learning path you actually finish.** A local, no-key tracker that sequences courses, papers, repos, and videos into phases, tracks your progress, and tells you what to read next — all from one git-friendly `plan.json`, entirely on your machine.
+
+**The twist:** the optional AI (sort your inbox, write study docs) runs in **your own** Claude Code / Codex agent — or a local Ollama model — so there's no shared key, no bill, and nothing leaves your machine.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 ![No API key required](https://img.shields.io/badge/API%20key-not%20required-blue)
@@ -16,16 +18,20 @@ A local, no-key learning-path tracker. Organize courses, papers, repos, and vide
 - 🤖 **Optional** AI (sort + enrich) via your own key or local Ollama — off by default
 - 🔒 Runs entirely locally. No account, no cloud, no API key needed.
 
+## Demo
+
+![Learning HQ demo](assets/demo.gif)
+
 ## Screenshot
 
 ![Learning HQ screenshot](assets/screenshot.png)
 
-> _No screenshot yet? The app runs at http://localhost:3000 after `npm start` — see `assets/README.md`._
+> _The app runs at http://localhost:3000 after `npm start`. To add the demo GIF, see `assets/README.md`._
 
 ## Quick start
 
 ```bash
-git clone <your-fork-url> learning-hq
+git clone https://github.com/Arrnnnaav/learning-hq.git
 cd learning-hq
 npm install
 npm start
