@@ -26,7 +26,7 @@ function wireEvents() {
   $('search-trigger').addEventListener('click', openSearch);
   document.addEventListener('keydown', e => {
     if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
-    if (e.key === 'Escape') { closeSearch(); closeOverview(); }
+    if (e.key === 'Escape') { closeSearch(); closeOverview(); closeDoc(); }
   });
   $('search-overlay').addEventListener('click', e => { if (e.target === $('search-overlay')) closeSearch(); });
   $('search-input').addEventListener('input', e => runSearch(e.target.value));
@@ -43,6 +43,16 @@ function wireEvents() {
     if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
+    $('doc-close').addEventListener('click', closeDoc);
+    $('doc-overlay').addEventListener('click', e => { if (e.target === $('doc-overlay')) closeDoc(); });
+    $('doc-overlay').addEventListener('keydown', e => {
+      if (e.key !== 'Tab') return;
+      const f = $('doc-overlay').querySelectorAll('button');
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
 }
 
 function catClass(c) {
@@ -119,6 +129,7 @@ function renderLinkList(phase) {
           <select class="lc-select sel-prio" aria-label="Priority">${prioOpts}</select>
         </div>
         <div class="link-btns">
+          ${link.doc ? '<button class="btn-study" aria-label="Open study doc">📖 Study</button>' : ''}
           <button class="btn-open">Open →</button>
           <button class="btn-done${link.done ? ' done-btn' : ''}">${link.done ? '✓ Done' : 'Done'}</button>
           <button class="btn-del" aria-label="Delete link">✕</button>
@@ -129,6 +140,8 @@ function renderLinkList(phase) {
     card.querySelector('.btn-del').addEventListener('click', () => { if (confirm(`Delete "${link.title}"?`)) deleteLink(link.id); });
     card.querySelector('.sel-phase').addEventListener('change', e => patchLink(link.id, { phase: e.target.value }));
     card.querySelector('.sel-prio').addEventListener('change', e => patchLink(link.id, { priority: e.target.value }));
+    const studyBtn = card.querySelector('.btn-study');
+    if (studyBtn) studyBtn.addEventListener('click', () => openDoc(link.id));
     list.appendChild(card);
   });
 
@@ -162,6 +175,22 @@ async function handleAddLink() {
   $('add-url-input').value = '';
   state.activePhaseId = 'inbox';
   await refresh();
+}
+
+let docLastFocus = null;
+async function openDoc(id) {
+  const res = await fetch(`/api/doc/${id}`);
+  if (!res.ok) { alert('No study doc for this link yet.'); return; }
+  const { markdown } = await res.json();
+  $('doc-body').innerHTML = window.marked ? window.marked.parse(markdown) : markdown;
+  docLastFocus = document.activeElement;
+  $('doc-overlay').classList.remove('hidden');
+  $('doc-close').focus();
+}
+function closeDoc() {
+  const wasOpen = !$('doc-overlay').classList.contains('hidden');
+  $('doc-overlay').classList.add('hidden');
+  if (wasOpen && docLastFocus) docLastFocus.focus();
 }
 
 function hasOverview(phase) {
