@@ -1,0 +1,10 @@
+{
+  "meta": { "title": "My Learning Plan", "version": 1 },
+  "phases": [
+    { "id": "inbox", "name": "Inbox", "summary": "Newly added links land here. Assign each a phase + priority.", "goal": "", "milestone": "", "concepts": [] },
+    { "id": "phase1", "name": "Phase 1 — Rename me", "summary": "Describe what this phase is about.", "goal": "What you'll achieve.", "milestone": "How you'll know you're done.", "concepts": ["concept one", "concept two"] }
+  ],
+  "links": [
+    { "id": "L1", "url": "https://example.com", "title": "Sample resource", "description": "Replace or delete me.", "category": "blog", "phase": "phase1", "priority": "Now", "done": false, "order": 0 }
+  ]
+}
