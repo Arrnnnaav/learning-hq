@@ -3,6 +3,7 @@ const { test, before, after, beforeEach } = require('node:test');
 const assert = require('node:assert');
 const fs = require('fs');
 const path = require('path');
+const http = require('http');
 
 const FIX = path.join(__dirname, 'fixtures', 'plan.json');
 const TMP = path.join(__dirname, 'fixtures', '_work.json');
@@ -87,4 +88,58 @@ test('GET /api/doc 400 on path traversal', async () => {
   plan.links.find(l => l.id === 'L1').doc = '../../secret.md';
   fs.writeFileSync(TMP, JSON.stringify(plan));
   assert.strictEqual((await api('GET', '/api/doc/L1')).status, 400);
+});
+
+let llm;
+function startLLM(content) {
+  return new Promise(resolve => {
+    llm = http.createServer((req, res) => {
+      let b = '';
+      req.on('data', c => (b += c));
+      req.on('end', () => {
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify({ choices: [{ message: { content } }] }));
+      });
+    });
+    llm.listen(0, () => resolve(llm.address().port));
+  });
+}
+
+test('GET /api/ai/status is disabled without config', async () => {
+  delete process.env.AI_BASE_URL; delete process.env.AI_MODEL;
+  const d = await (await api('GET', '/api/ai/status')).json();
+  assert.strictEqual(d.enabled, false);
+});
+
+test('POST /api/ai/sort 503 when disabled', async () => {
+  delete process.env.AI_BASE_URL; delete process.env.AI_MODEL;
+  assert.strictEqual((await api('POST', '/api/ai/sort')).status, 503);
+});
+
+test('POST /api/ai/sort assigns inbox links when enabled', async () => {
+  const plan = JSON.parse(fs.readFileSync(TMP, 'utf8'));
+  plan.links.push({ id: 'L9', url: 'u', title: 't', description: '', category: 'blog', phase: 'inbox', priority: 'Soon', done: false, order: 0 });
+  fs.writeFileSync(TMP, JSON.stringify(plan));
+  const port = await startLLM(JSON.stringify({ assignments: [{ id: 'L9', phase: 'p1', priority: 'Now' }] }));
+  process.env.AI_BASE_URL = `http://localhost:${port}/v1`;
+  process.env.AI_MODEL = 'test';
+  const r = await api('POST', '/api/ai/sort');
+  assert.strictEqual(r.status, 200);
+  const after = JSON.parse(fs.readFileSync(TMP, 'utf8'));
+  assert.strictEqual(after.links.find(l => l.id === 'L9').phase, 'p1');
+  assert.strictEqual(after.links.find(l => l.id === 'L9').priority, 'Now');
+  llm.close();
+  delete process.env.AI_BASE_URL; delete process.env.AI_MODEL;
+});
+
+test('POST /api/ai/enrich/:id updates a link when enabled', async () => {
+  const port = await startLLM(JSON.stringify({ title: 'Better', description: 'Better desc', category: 'github' }));
+  process.env.AI_BASE_URL = `http://localhost:${port}/v1`;
+  process.env.AI_MODEL = 'test';
+  const r = await api('POST', '/api/ai/enrich/L1');
+  assert.strictEqual(r.status, 200);
+  const after = JSON.parse(fs.readFileSync(TMP, 'utf8'));
+  assert.strictEqual(after.links.find(l => l.id === 'L1').title, 'Better');
+  llm.close();
+  delete process.env.AI_BASE_URL; delete process.env.AI_MODEL;
 });

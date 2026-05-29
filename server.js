@@ -3,6 +3,9 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const { readPlan, writePlan, nextLinkId, enrichUrl, buildPhasesView } = require('./lib/plan');
+const provider = require('./ai/provider');
+const { sortInbox, enrichLink } = require('./ai/tasks');
+provider.loadEnv();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -91,6 +94,47 @@ app.get('/api/doc/:id', (req, res) => {
   }
   if (!fs.existsSync(docPath)) return res.status(404).json({ error: 'no doc' });
   res.json({ id: link.id, markdown: fs.readFileSync(docPath, 'utf8') });
+});
+
+app.get('/api/ai/status', (req, res) => {
+  res.json({ enabled: provider.isEnabled() });
+});
+
+app.post('/api/ai/sort', async (req, res) => {
+  if (!provider.isEnabled()) return res.status(503).json({ error: 'ai disabled' });
+  const plan = readPlan(PLAN_FILE);
+  try {
+    const { assignments, skipped } = await sortInbox(plan, provider.chat);
+    for (const a of assignments) {
+      const link = plan.links.find(l => l.id === a.id);
+      if (!link) continue;
+      const orders = plan.links.filter(l => l.phase === a.phase).map(l => l.order ?? 0);
+      link.phase = a.phase;
+      link.priority = a.priority;
+      link.order = orders.length ? Math.max(...orders) + 1 : 0;
+    }
+    writePlan(PLAN_FILE, plan);
+    res.json({ ok: true, assignments, skipped });
+  } catch (e) {
+    res.status(502).json({ error: e.message });
+  }
+});
+
+app.post('/api/ai/enrich/:id', async (req, res) => {
+  if (!provider.isEnabled()) return res.status(503).json({ error: 'ai disabled' });
+  const plan = readPlan(PLAN_FILE);
+  const link = plan.links.find(l => l.id === req.params.id);
+  if (!link) return res.status(404).json({ error: 'not found' });
+  try {
+    const f = await enrichLink(link, provider.chat);
+    link.title = f.title;
+    link.description = f.description;
+    link.category = f.category;
+    writePlan(PLAN_FILE, plan);
+    res.json({ ok: true, link });
+  } catch (e) {
+    res.status(502).json({ error: e.message });
+  }
 });
 
 if (require.main === module) {
