@@ -1,5 +1,6 @@
 const state = { phases: [], activePhaseId: null };
 const $ = id => document.getElementById(id);
+function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c])); }
 let overviewLastFocus = null;
 
 const PRIORITIES = ['Now', 'Soon', 'Someday'];
@@ -64,7 +65,7 @@ function renderKanban() {
     card.setAttribute('aria-pressed', isActive);
     const statusTxt = isDone ? '<span class="phase-status done">✓ Done</span>' : '';
     card.innerHTML = `
-      <div class="phase-card-top"><span class="phase-card-id">${phase.name}</span>${statusTxt}</div>
+      <div class="phase-card-top"><span class="phase-card-id">${esc(phase.name)}</span>${statusTxt}</div>
       <div class="phase-progress-bar"><div class="phase-progress-fill" style="width:${pct}%"></div></div>
       <div class="phase-count">${isDone ? '✓ complete' : `${phase.done} / ${phase.total}`}</div>`;
     card.addEventListener('click', () => selectPhase(phase.id));
@@ -98,7 +99,7 @@ function renderLinkList(phase) {
   }
 
   const phaseOpts = state.phases.map(p =>
-    `<option value="${p.id}"${p.id === phase.id ? ' selected' : ''}>${p.name}</option>`).join('');
+    `<option value="${p.id}"${p.id === phase.id ? ' selected' : ''}>${esc(p.name)}</option>`).join('');
 
   phase.links.forEach(link => {
     const card = document.createElement('div');
@@ -106,11 +107,11 @@ function renderLinkList(phase) {
     const prioOpts = PRIORITIES.map(pr =>
       `<option value="${pr}"${pr === link.priority ? ' selected' : ''}>${pr}</option>`).join('');
     card.innerHTML = `
-      <span class="link-category ${catClass(link.category)}">${link.category || 'link'}</span>
+      <span class="link-category ${catClass(link.category)}">${esc(link.category || 'link')}</span>
       <div class="link-body">
-        <div class="link-title" title="${link.title}"><span class="link-id">${link.id}</span>${link.title}</div>
-        ${link.description ? `<div class="link-desc">${link.description}</div>` : ''}
-        <div class="link-meta">${domain(link.url)}</div>
+        <div class="link-title" title="${esc(link.title)}"><span class="link-id">${link.id}</span>${esc(link.title)}</div>
+        ${link.description ? `<div class="link-desc">${esc(link.description)}</div>` : ''}
+        <div class="link-meta">${esc(domain(link.url))}</div>
       </div>
       <div class="link-actions">
         <div class="lc-controls">
@@ -185,8 +186,8 @@ function closeOverview() {
 function renderOverview(phase) {
   $('overview-name').textContent = phase.name;
   const sum = $('overview-summary'); sum.textContent = phase.summary || ''; sum.classList.toggle('hidden', !phase.summary);
-  const goal = $('overview-goal'); goal.innerHTML = phase.goal ? `🎯 <strong>Goal:</strong> ${phase.goal}` : ''; goal.classList.toggle('hidden', !phase.goal);
-  const ms = $('overview-milestone'); ms.innerHTML = phase.milestone ? `🏁 <strong>Milestone:</strong> ${phase.milestone}` : ''; ms.classList.toggle('hidden', !phase.milestone);
+  const goal = $('overview-goal'); goal.innerHTML = phase.goal ? `🎯 <strong>Goal:</strong> ${esc(phase.goal)}` : ''; goal.classList.toggle('hidden', !phase.goal);
+  const ms = $('overview-milestone'); ms.innerHTML = phase.milestone ? `🏁 <strong>Milestone:</strong> ${esc(phase.milestone)}` : ''; ms.classList.toggle('hidden', !phase.milestone);
   const wrap = $('overview-concepts-wrap'); const box = $('overview-concepts'); box.innerHTML = '';
   const concepts = phase.concepts || [];
   concepts.forEach(c => { const s = document.createElement('span'); s.className = 'concept-chip'; s.textContent = c; box.appendChild(s); });
@@ -213,9 +214,9 @@ function runSearch(q) {
   matches.forEach(link => {
     const row = document.createElement('div');
     row.className = 'search-result';
-    row.innerHTML = `<span class="link-category ${catClass(link.category)}" style="font-size:9px">${link.category}</span>
-      <span class="search-result-title">${link.id} — ${link.title}</span>
-      <span class="search-result-phase">${link.phaseName}</span>`;
+    row.innerHTML = `<span class="link-category ${catClass(link.category)}" style="font-size:9px">${esc(link.category)}</span>
+      <span class="search-result-title">${link.id} — ${esc(link.title)}</span>
+      <span class="search-result-phase">${esc(link.phaseName)}</span>`;
     row.addEventListener('click', () => { closeSearch(); selectPhase(link.phase); });
     results.appendChild(row);
   });

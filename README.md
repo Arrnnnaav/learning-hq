@@ -2,8 +2,6 @@
 
 A local, no-key learning-path tracker. Organize courses, papers, repos, and videos into phases, track your progress, and see what to read next — all from a single, git-friendly `plan.json`. Runs entirely on your machine. No account, no API key, no cloud.
 
-![screenshot](docs/screenshot.png)
-
 ## Quick start
 
 ```bash

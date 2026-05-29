@@ -1,5 +1,5 @@
 'use strict';
-const { test, after, beforeEach } = require('node:test');
+const { test, before, after, beforeEach } = require('node:test');
 const assert = require('node:assert');
 const fs = require('fs');
 const path = require('path');
@@ -12,6 +12,7 @@ const app = require('../server');
 let server, port;
 beforeEach(() => { fs.copyFileSync(FIX, TMP); });
 after(() => { server && server.close(); fs.existsSync(TMP) && fs.unlinkSync(TMP); });
+before(async () => { await start(); });
 
 function start() {
   return new Promise(r => { server = app.listen(0, () => { port = server.address().port; r(); }); });
@@ -25,7 +26,6 @@ function api(method, p, body) {
 }
 
 test('GET /api/plan returns phases with links + counts', async () => {
-  await start();
   const data = await (await api('GET', '/api/plan')).json();
   const p1 = data.phases.find(p => p.id === 'p1');
   assert.ok(p1);

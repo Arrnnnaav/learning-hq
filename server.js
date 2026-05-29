@@ -25,6 +25,7 @@ app.get('/api/plan', (req, res) => {
 app.post('/api/links', async (req, res) => {
   const { url } = req.body || {};
   if (!url) return res.status(400).json({ error: 'url required' });
+  if (!String(url).startsWith('http')) return res.status(400).json({ error: 'url must start with http' });
   const plan = readPlan(PLAN_FILE);
   if (plan.links.find(l => l.url === url)) return res.status(409).json({ error: 'duplicate' });
   const enriched = await enrichUrl(url);
