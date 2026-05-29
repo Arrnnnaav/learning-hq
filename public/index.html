@@ -37,6 +37,14 @@
     </div>
   </div>
 
+  <!-- Study doc overlay -->
+  <div id="doc-overlay" class="hidden" role="dialog" aria-modal="true" aria-label="Study document">
+    <div id="doc-box">
+      <button id="doc-close" title="Close (Esc)" aria-label="Close study doc">✕</button>
+      <div id="doc-body" class="doc-content"></div>
+    </div>
+  </div>
+
   <!-- Top bar -->
   <header id="topbar">
     <div id="logo"><span class="logo-star">✦</span> AI LEARNING HQ</div>
@@ -84,6 +92,7 @@
 
   <div id="loading" class="hidden">Loading...</div>
 
+  <script src="vendor/marked.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
