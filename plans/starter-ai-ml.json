@@ -15,9 +15,9 @@
     {
       "id": "phase0",
       "name": "Immediate Wins",
-      "summary": "Quick, high-ROI upgrades to your existing projects that need zero new prerequisites. The aim is to make DocCluster meaningfully stronger and refresh your resume fast — reasoning-based RAG, faster embeddings, and bigger local models you can run on modest hardware.",
-      "goal": "Upgrade existing projects. Zero new prereqs. Fast ROI on resume.",
-      "milestone": "DocCluster v2: reasoning-based RAG + faster embeddings + bigger local model. Update resume.",
+      "summary": "Quick, high-ROI upgrades that need zero new prerequisites — reasoning-based RAG, faster embeddings, and bigger local models you can run on modest hardware. Strengthen an existing project fast.",
+      "goal": "Upgrade an existing project. Zero new prereqs. Fast ROI.",
+      "milestone": "A v2 of your project: reasoning-based RAG + faster embeddings + a bigger local model.",
       "concepts": [
         "Reasoning-based / tree-index RAG (PageIndex)",
         "Knowledge-graph + dual-level retrieval (LightRAG)",
@@ -30,9 +30,9 @@
     {
       "id": "phase1",
       "name": "Plug Critical Interview Gaps",
-      "summary": "A 6.37 CGPA means interviewers probe hard, so these are non-negotiable before applying. You close the two biggest gaps: system design (nothing on the resume yet) and the math behind the attention variants you'll meet in papers.",
-      "goal": "CGPA 6.37 means interviewers probe hard. These are non-negotiable before any job applications.",
-      "milestone": "Can answer system design questions. Understand math behind attention variants.",
+      "summary": "Close the two gaps interviewers probe hardest: system design and the math behind the attention variants you'll meet in papers.",
+      "goal": "Cover non-negotiable interview fundamentals before applying.",
+      "milestone": "Can answer system design questions. Understand the math behind attention variants.",
       "concepts": [
         "System design fundamentals (caching, load balancing, consistent hashing, microservices)",
         "Attention math, softmax, positional encoding (Jurafsky SLP3)",
@@ -42,9 +42,9 @@
     {
       "id": "phase2",
       "name": "Agent Foundations",
-      "summary": "Your biggest resume gap, closed: go from zero to understanding and building AI agents. You'll learn the agent-vs-workflow distinction, the core control loops, multi-agent patterns, and the production engineering (tools, context, evaluation) that separates a demo from a system.",
-      "goal": "Fill biggest resume gap. Go from zero to building agents.",
-      "milestone": "Understand agent architectures. Can describe in interview. Have run agent code.",
+      "summary": "Go from zero to understanding and building AI agents — the agent-vs-workflow distinction, core control loops, multi-agent patterns, and the production engineering (tools, context, evaluation) that separates a demo from a system.",
+      "goal": "Go from zero to building agents.",
+      "milestone": "Understand agent architectures, can describe them in an interview, and have run agent code.",
       "concepts": [
         "Agent vs workflow distinction",
         "Reflection / reflect-act loop",
@@ -58,9 +58,9 @@
     {
       "id": "phase3",
       "name": "Research Papers",
-      "summary": "Amazon ML School showed you can read papers — this phase turns that into a high-signal skill for research and ML roles. You read four-plus papers on attention internals and efficiency, then study agent-harness engineering, and apply at least one technique (TurboQuant) to DocCluster.",
-      "goal": "Amazon ML School shows he can read papers. High-signal for research/ML roles.",
-      "milestone": "4 papers read. Can discuss each technically. TurboQuant applied to DocCluster.",
+      "summary": "Turn paper-reading into a high-signal skill for research and ML roles. Read several papers on attention internals and efficiency, study agent-harness engineering, and apply at least one technique to a project.",
+      "goal": "Build paper-reading depth. High-signal for research/ML roles.",
+      "milestone": "Several papers read. Can discuss each technically. One technique applied to a project.",
       "concepts": [
         "Cross-head attention communication (IHA)",
         "KV-cache & vector compression (TurboQuant / PolarQuant)",
@@ -72,9 +72,9 @@
     {
       "id": "phase4",
       "name": "Build Agent Project",
-      "summary": "Convert everything you've learned into one strong, deployed agent project — worth more than ten tutorials. You'll use spec-driven development and multi-agent orchestration patterns, and set up real evaluation for the agent.",
-      "goal": "Convert learning into resume bullet. 1 strong agent project beats 10 tutorials.",
-      "milestone": "Deployed agent project on GitHub with README. New resume bullet.",
+      "summary": "Convert everything you've learned into one strong, deployed agent project — worth more than ten tutorials. Use spec-driven development and multi-agent orchestration, and set up real evaluation.",
+      "goal": "Convert learning into a resume bullet. One strong agent project beats ten tutorials.",
+      "milestone": "Deployed agent project on GitHub with a README.",
       "concepts": [
         "Evolutionary agent design (AlphaEvolve)",
         "Claude Code skills for solo builders (gstack)",
@@ -86,9 +86,9 @@
     {
       "id": "phase5",
       "name": "Trading AI Domain",
-      "summary": "An optional, high-paying niche where your ML background transfers directly. You study multi-agent trading architectures and the new financial foundation models, optionally building a small trading agent.",
-      "goal": "High-paying niche. His ML background transfers directly.",
-      "milestone": "Understand trading agent architecture. Optional: small trading agent project.",
+      "summary": "An optional, high-paying niche where an ML background transfers directly. Study multi-agent trading architectures and the new financial foundation models, optionally building a small trading agent.",
+      "goal": "A high-paying niche; ML skills transfer directly.",
+      "milestone": "Understand trading-agent architecture. Optional: a small trading agent project.",
       "concepts": [
         "Multi-agent signal generation (TradingAgents)",
         "Signal publish/copy platform architecture (AI-Trader)",
@@ -100,9 +100,9 @@
     {
       "id": "phase_multimodal",
       "name": "Multimodal LLMs",
-      "summary": "Understand vision-language models end to end — from ViT patch embeddings to instruction-tuned VLMs — bridging your CNN background with modern multimodal AI. Culminates in a Multimodal DocCluster project.",
-      "goal": "Understand vision-language models end-to-end. From ViT patch embeddings to instruction-tuned VLMs. Bridge CNN background with modern multimodal AI.",
-      "milestone": "Can explain ViT/CLIP/BLIP-2/LLaVA architectures in technical interviews. Built Multimodal DocCluster project.",
+      "summary": "Understand vision-language models end to end — from ViT patch embeddings to instruction-tuned VLMs — bridging a CNN background with modern multimodal AI.",
+      "goal": "Understand vision-language models end-to-end, from ViT patch embeddings to instruction-tuned VLMs.",
+      "milestone": "Can explain ViT/CLIP/BLIP-2/LLaVA architectures. Built a multimodal project.",
       "concepts": [
         "Vision Transformer (ViT) patch embeddings",
         "Contrastive learning (SimCLR, CLIP)",
@@ -213,7 +213,7 @@
       "id": "L8",
       "url": "https://github.com/VectifyAI/PageIndex",
       "title": "PageIndex",
-      "description": "Reasoning-based RAG with hierarchical tree indexes — no vector DB. Direct upgrade to DocCluster.",
+      "description": "Reasoning-based RAG with hierarchical tree indexes — no vector DB. A drop-in upgrade for a local RAG project.",
       "category": "github",
       "phase": "phase0",
       "priority": "Soon",
@@ -246,7 +246,7 @@
       "id": "L12",
       "url": "https://github.com/StarlightSearch/EmbedAnything",
       "title": "EmbedAnything",
-      "description": "Fast embedding pipeline for files, URLs, images. Replaces sentence-transformers in DocCluster.",
+      "description": "Fast embedding pipeline for files, URLs, images. A faster replacement for sentence-transformers.",
       "category": "github",
       "phase": "phase0",
       "priority": "Soon",
@@ -463,17 +463,6 @@
       "order": 6
     },
     {
-      "id": "L34",
-      "url": "https://www.youtube.com/watch?v=10XNXASCgNs",
-      "title": "YouTube video (unknown)",
-      "description": "Specific video — watch once and assess relevance",
-      "category": "youtube_video",
-      "phase": "phase6",
-      "priority": "Soon",
-      "done": false,
-      "order": 7
-    },
-    {
       "id": "L37",
       "url": "https://github.com/donnemartin/system-design-primer",
       "title": "System Design Primer",
@@ -532,7 +521,7 @@
       "id": "L45",
       "url": "https://github.com/openai/CLIP",
       "title": "CLIP (OpenAI)",
-      "description": "Contrastive Language-Image Pretraining — foundational vision-language model, zero-shot image classification via text prompts. Natural fit with his CNN/OpenCV background.",
+      "description": "Contrastive Language-Image Pretraining — foundational vision-language model, zero-shot image classification via text prompts. A natural fit if you have a CNN/OpenCV background.",
       "category": "github",
       "phase": "phase_multimodal",
       "priority": "Soon",
