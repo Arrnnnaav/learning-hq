@@ -24,6 +24,13 @@ cp plans/plan.template.json plan.json
 
 Then rename the phases and add your own links.
 
+## AI automation (optional)
+
+The app is fully usable on its own. For AI-powered sorting and study-doc generation,
+install the companion **Learning HQ plugin** in your own agent (Claude Code or Codex)
+and run it from this directory. Generated docs appear behind a 📖 **Study** button on the
+relevant link. See the plugin repo for setup.
+
 ## Plan format
 
 `plan.json` has two arrays:

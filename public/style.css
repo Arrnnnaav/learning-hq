@@ -751,3 +751,62 @@ button:hover { opacity: 0.9; }
   cursor: pointer;
 }
 .btn-del:hover { background: rgba(248,113,113,.12); color: var(--red); border-color: rgba(248,113,113,.3); opacity: 1; }
+
+/* ── study doc (OSS plugin output) ── */
+.btn-study {
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid rgba(240,179,74,.4);
+  border-radius: 8px;
+  padding: 6px 11px;
+  font-size: 12.5px;
+  cursor: pointer;
+}
+.btn-study:hover { background: var(--accent-soft); border-color: var(--accent); opacity: 1; }
+
+#doc-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.6);
+  backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px);
+  z-index: 1000;
+  display: flex; align-items: flex-start; justify-content: center;
+  padding-top: 8vh;
+}
+#doc-box {
+  position: relative;
+  width: min(780px, 94vw);
+  max-height: 84vh; overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 18px;
+  padding: 34px 40px;
+  box-shadow: 0 30px 70px rgba(0,0,0,.6);
+}
+#doc-close {
+  position: absolute; top: 16px; right: 18px;
+  background: none; border: none; color: var(--text-muted);
+  font-size: 20px; cursor: pointer; line-height: 1;
+}
+#doc-close:hover { color: var(--text); opacity: 1; }
+
+.doc-content { color: var(--text-dim); line-height: 1.7; font-size: 15px; }
+.doc-content h1, .doc-content h2, .doc-content h3 {
+  font-family: 'Syne', sans-serif; color: var(--text); margin: 1.2em 0 .5em; line-height: 1.2;
+}
+.doc-content h1 { font-size: 26px; }
+.doc-content h2 { font-size: 20px; }
+.doc-content h3 { font-size: 16px; }
+.doc-content a { color: var(--accent2); }
+.doc-content code {
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
+  background: var(--surface3); padding: 2px 6px; border-radius: 5px; color: var(--accent);
+}
+.doc-content pre {
+  background: var(--surface3); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 16px; overflow-x: auto; margin: 1em 0;
+}
+.doc-content pre code { background: none; padding: 0; color: var(--text); }
+.doc-content table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+.doc-content th, .doc-content td { border: 1px solid var(--border); padding: 7px 10px; text-align: left; font-size: 13.5px; }
+.doc-content ul, .doc-content ol { padding-left: 1.4em; margin: .6em 0; }
+.doc-content blockquote { border-left: 3px solid var(--accent2); padding-left: 14px; color: var(--text-muted); margin: 1em 0; }
