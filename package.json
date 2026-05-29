@@ -1,0 +1,14 @@
+{
+  "name": "learning-hq",
+  "version": "1.0.0",
+  "description": "A local, no-key learning-path tracker. Track phases, resources, and progress in one editable plan.json.",
+  "license": "MIT",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
